@@ -1,17 +1,20 @@
-def sort_negatives(*args):
-    pos_vars = []
-    neg_vars = []
+def sort_odd(in_data):
+    odd_vars = []
+    loc_in_data = in_data
 
-    for i in range(len(args)):
-        if int(args[i]) >= 0:
-            pos_vars.append(args[i])
-        else:
-            neg_vars.append(args[i])
+    for i in loc_in_data:
+        if int(i) % 2 != 0:
+            odd_vars.append(i)
 
-    # Sort negative array
-    neg_vars.sort()
-    # Append not touched positive array
-    neg_vars.extend(pos_vars)
+    odd_vars.sort()
 
-    return neg_vars
+    cnt = 0
+    j = 0
+    for i in loc_in_data:
+        if int(i) % 2 != 0:
+            loc_in_data[j] = odd_vars[cnt]
+            cnt += 1
+        j += 1
+
+    return loc_in_data
 
