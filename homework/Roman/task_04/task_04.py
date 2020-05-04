@@ -1,29 +1,16 @@
-def calc_circles(in_data):
-
-    def calc(text: str):
-        cnt = 0
-        for i in text:
-            if i == '9':
-                cnt += 1
-            elif i == '8':
-                cnt += 2
-            elif i == '6':
-                cnt += 1
-            elif i == '4':
-                cnt += 1
-            elif i == '0':
-                cnt += 1
-        return cnt
-
-    if type(in_data) is float:
+def count_holes(in_data):
+    if isinstance(in_data, float):
         return 'ERROR'
 
-    in_str = str(in_data)
-    """ Need special care for negatives """
-    if type(in_data) is int:
-        return calc(in_str)
-    else:
-        if in_str.isdigit():
-            return calc(in_str)
-        else:
-            return 'ERROR'
+    if not isinstance(in_data, int) and not str(in_data).isdigit():
+        return 'ERROR'
+
+    # Use dictionary to avoid if else
+    d = {'9': 1, '8': 2, '7': 0, '6': 1, '5': 0, '4': 1, '3': 0, '2': 0, '1': 0, '0': 1, '-': 0}
+
+    cnt = 0
+    for i in str(in_data):
+        cnt += d[i]
+
+    return cnt
+
