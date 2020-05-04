@@ -1,15 +1,12 @@
 def check_symmetry(in_data):
-    """ Format string at begging """
-    """ Make all lower case"""
-    loc_str = (str(in_data)).lower()
-    """ Remove white spaces """
-    loc_str = loc_str.replace(' ', '')
-    """ Compare two cuts, second with reverse direction.
-        Since reverse direction starts from -1 need add 1 to final index """
-    if loc_str[0:int(len(loc_str) / 2):1] == loc_str[-1:-(int(len(loc_str) / 2) + 1):-1]:
+    # Format string at begging
+    # Make all lower case and remove white spaces
+    loc_str = str(in_data).lower().replace(' ', '')
+
+    # Compare two cuts, second with reverse direction.
+    # Since reverse direction starts from -1 need subtract 1 from final index
+    str_length = len(loc_str)
+    if loc_str[0:str_length] == loc_str[-1:-str_length - 1:-1]:
         print('YES')
     else:
         print('NO')
-
-    pass
-
