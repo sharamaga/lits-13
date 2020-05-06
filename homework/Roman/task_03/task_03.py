@@ -6,7 +6,7 @@ def check_symmetry(in_data):
     # Compare two cuts, second with reverse direction.
     # Since reverse direction starts from -1 need subtract 1 from final index
     str_length = len(loc_str)
-    if loc_str[0:str_length] == loc_str[-1:-str_length - 1:-1]:
+    if loc_str[:] == loc_str[::-1]:
         print('YES')
     else:
         print('NO')
