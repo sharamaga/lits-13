@@ -6,10 +6,10 @@ def find_most_frequent(text: str):
     def get_first_letter(word_text):
         return str(word_text)[0]
 
-    """ Unify all text to lower case """
+    # Unify all text to lower case
     loc_text = text.lower()
 
-    """ Create list of words """
+    # Create list of words
     words_list = []
     one_word = ''
     for i in loc_text:
@@ -17,17 +17,17 @@ def find_most_frequent(text: str):
             one_word += i
             word_flag = True
         else:
-            """ Some punctuation mark happens """
+            # Some punctuation mark happens
             if word_flag:
                 word_flag = False
                 words_list.append(one_word)
                 one_word = ''
 
-    """ Made set from list to remove duplicates """
+    # Made set from list to remove duplicates
     words_set = set(words_list)
 
-    """ Calculate frequency of word happening.
-        Will have list which contains pairs of elements: [word, freq] """
+    # Calculate frequency of word happening.
+    # Will have list which contains pairs of elements: [word, freq]
     word_freq = []
     for j in words_set:
         word_cnt = [j]
@@ -39,7 +39,7 @@ def find_most_frequent(text: str):
             word_cnt.extend(str(cnt))
             word_freq.append(word_cnt)
 
-    """ Check how many max elements we have """
+    # Check how many max elements we have
     word_freq.sort(key=get_second, reverse=True)
     maximum = word_freq[0][1]
     maxs_list = []
@@ -47,7 +47,7 @@ def find_most_frequent(text: str):
         if maximum == i[1]:
             maxs_list.append(i[0])
 
-    """ Sort list of most faced words """
+    # Sort list of most faced words
     maxs_list.sort(key=get_first_letter)
 
     return maxs_list
