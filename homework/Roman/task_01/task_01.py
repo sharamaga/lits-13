@@ -1,3 +1,6 @@
+import string
+
+
 def convert_n_to_m(x, n: int, m: int):
     """Calculates representation of x in base m.
 
@@ -19,13 +22,13 @@ def convert_n_to_m(x, n: int, m: int):
     else:
         in_string = str(x)
 
-    dict_key = list(map(chr, range(48, 58)))
-    dict_key.extend(list(map(chr, range(65, 91))))
-    dict_val = list(map(int, range(0, 37)))
+    dict_key = list(string.digits)
+    dict_key.extend(list(string.ascii_uppercase))
+    dict_val = list(range(0, 37))
 
-    forward_dict = dict(zip(dict_key, dict_val))
+    forward_dict = {f: i for i, f in enumerate(dict_key)}
 
-    reverse_dict = dict(zip(dict_val, dict_key))
+    reverse_dict = {i: f for i, f in enumerate(dict_key)}
 
     # Transfer input value into BASE10
     dec_val = 0
