@@ -1,11 +1,4 @@
 def find_most_frequent(text: str):
-
-    def get_second(elem):
-        return elem[1]
-
-    def get_first_letter(word_text):
-        return str(word_text)[0]
-
     # Unify all text to lower case
     loc_text = text.lower()
 
@@ -40,7 +33,7 @@ def find_most_frequent(text: str):
             word_freq.append(word_cnt)
 
     # Check how many max elements we have
-    word_freq.sort(key=get_second, reverse=True)
+    word_freq.sort(key=(lambda elem: elem[1]), reverse=True)
     maximum = word_freq[0][1]
     maxs_list = []
     for i in word_freq:
@@ -48,7 +41,7 @@ def find_most_frequent(text: str):
             maxs_list.append(i[0])
 
     # Sort list of most faced words
-    maxs_list.sort(key=get_first_letter)
+    maxs_list.sort(key=(lambda word: word[0]))
 
     return maxs_list
 
